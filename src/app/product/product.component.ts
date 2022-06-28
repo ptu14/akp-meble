@@ -21,8 +21,6 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
-    console.log(id);
-
     this.product = this.products.find((product) => product.id == id);
   }
 

@@ -23,7 +23,7 @@
           </div>
           <div *ngIf="product.priceOld" class="akp-product-price__old">
             <span class="akp-product-price__old-price">{{
-              itemsToCart * product.priceOld | currency: "USD"
+              itemsToCart * product.priceOld | currency
             }}</span>
             <span class="akp-product-price__discount">{{
               (product.priceOld - product.price) / product.priceOld | percent
