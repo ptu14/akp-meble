@@ -10,3 +10,9 @@ export interface Product {
   itemsLeft: number;
   description: string;
 }
+
+export interface Order {
+  firstname: string;
+  lastname: string;
+  email: string;
+}

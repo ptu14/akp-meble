@@ -30,5 +30,18 @@
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus, nisi sed. Nisi quibusdam voluptates blanditiis omnis tempora provident sunt cumque!"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "firstname": "Mateusz",
+      "lastname": "",
+      "email": "as@a.pl",
+      "id": 1
+    },
+    {
+      "firstname": "Mateusz",
+      "lastname": null,
+      "email": "test@a.pl",
+      "id": 2
+    }
+  ]
 }
