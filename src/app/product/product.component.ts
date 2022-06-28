@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../common/data/products.service';
 import { data } from '../mocked-data';
 import { Product } from '../model';
 
@@ -9,19 +10,18 @@ import { Product } from '../model';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  products: Product[] = data;
-
-  product: Product | undefined;
+  product!: Product | undefined;
 
   itemsToCart = 1;
 
-  productNumber = 1;
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    this.product = this.products.find((product) => product.id == id);
+    const id: string = this.route.snapshot.params['id'];
+    this.product = this.productsService.getProduct(id);
   }
 
   onClickHandler(event: Event) {

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/model';
-import { data } from '../mocked-data';
+import { ProductsService } from '../common/data/products.service';
 
 @Component({
   selector: 'akp-products-list',
@@ -8,7 +8,11 @@ import { data } from '../mocked-data';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit {
-  products: Product[] = data;
+  products!: Product[];
 
-  ngOnInit(): void {}
+  constructor(private productsService: ProductsService) {}
+
+  ngOnInit(): void {
+    this.products = this.productsService.getProducts();
+  }
 }
