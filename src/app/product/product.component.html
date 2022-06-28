@@ -1,4 +1,4 @@
-<main class="container akp-product">
+<main *ngIf="product" class="container akp-product">
   <div class="row">
     <div class="col-md-4">
       <img class="akp-product__image" [src]="product.image" alt="" />
@@ -12,23 +12,41 @@
         <p class="akp-product__caption">
           {{ product.description }}
         </p>
-        <p>Dostępnych sztuk: <span>111</span></p>
+        <p>
+          Dostępnych sztuk: <span> {{ product.itemsLeft }}</span>
+        </p>
         <div class="akp-product-price">
           <div class="akp-product-price__current">
-            <h2 class="akp-product-price__price">{{ product.price }}</h2>
+            <h2 class="akp-product-price__price">
+              {{ itemsToCart * product.price }}
+            </h2>
           </div>
           <div *ngIf="product.priceOld" class="akp-product-price__old">
             <span class="akp-product-price__old-price">{{
-              product.priceOld
+              itemsToCart * product.priceOld
             }}</span>
             <span class="akp-product-price__discount">-50%</span>
           </div>
+        </div>
+        <div style="margin: 1rem 0">
+          <input
+            class="apk-control"
+            type="number"
+            [(ngModel)]="itemsToCart"
+            [min]="1"
+            [max]="product.itemsLeft"
+          />
         </div>
         <div class="akp-product__buttons">
           <button class="akp-button akp-button--secondary">
             Dodaj do koszyka
           </button>
-          <button class="akp-button akp-button--primary">Kup teraz</button>
+          <button
+            class="akp-button akp-button--primary"
+            [disabled]="product.itemsLeft === 0"
+          >
+            Kup teraz
+          </button>
         </div>
       </div>
     </div>

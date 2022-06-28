@@ -26,4 +26,7 @@
   </div>
 </header>
 
-<akp-product [product]="data[0]"></akp-product>
+<button (click)="product.test()">zmien produkt</button>
+
+<akp-product #product [products]="data" [productNumber]="diplayPorduct">
+</akp-product>
