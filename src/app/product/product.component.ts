@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 import { ProductsService } from '../common/data/products.service';
+import { NotificationService } from '../common/notification.service';
 import { Product } from '../model';
 
 @Component({
@@ -21,7 +22,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -38,13 +40,17 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.subscriptions.add(productSubscription);
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe(); // pamietaj zawsze sie odsubscrybowac
-  }
-
   onClickHandler(event: Event) {
     if (event.target) {
       this.itemsToCart = (event.target as HTMLInputElement).valueAsNumber;
     }
+  }
+
+  addToBasket() {
+    this.notificationService.addToCart(this.itemsToCart);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // pamietaj zawsze sie odsubscrybowac
   }
 }
