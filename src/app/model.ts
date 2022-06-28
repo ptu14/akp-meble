@@ -12,7 +12,7 @@ export interface Product {
 }
 
 export interface Order {
-  firstname: string;
-  lastname: string;
-  email: string;
+  firstname: string | null;
+  lastname: string | null;
+  email: string | null;
 }

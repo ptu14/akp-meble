@@ -42,6 +42,12 @@
       "lastname": null,
       "email": "test@a.pl",
       "id": 2
+    },
+    {
+      "firstname": "Tadeusz",
+      "lastname": "Głowacki",
+      "email": "tadeusz@xn--gowacki-njb.pl",
+      "id": 3
     }
   ]
 }

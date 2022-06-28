@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <form #form="ngForm" (ngSubmit)="submit(form)">
+      <form [formGroup]="contactForm" (ngSubmit)="submit()">
         <fieldset class="akp-cart__fildset">
           <legend>Dane Odbiorcy:</legend>
           <div class="akp-form-control">
@@ -18,9 +18,7 @@
               class="apk-control"
               type="text"
               id="firstname"
-              name="firstname"
-              ngModel
-              required
+              formControlName="firstname"
             />
           </div>
           <div class="akp-form-control">
@@ -30,8 +28,7 @@
               class="apk-control"
               type="text"
               id="lastname"
-              name="lastname"
-              ngModel
+              formControlName="lastname"
             />
           </div>
           <div class="akp-form-control">
@@ -40,18 +37,14 @@
               class="apk-control"
               type="email"
               id="email"
-              name="email"
-              email
-              ngModel
-              #emailControl="ngModel"
+              formControlName="email"
             />
           </div>
-          <p *ngIf="emailControl.touched && emailControl.invalid">
+          <!-- <p *ngIf="emailControl.touched && emailControl.invalid">
             Nieporawny adres email
-          </p>
+          </p> -->
         </fieldset>
         <button
-          [disabled]="form.invalid"
           class="akp-button akp-button--primary akp-cart__submit"
           type="submit"
         >
