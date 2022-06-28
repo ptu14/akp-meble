@@ -1,4 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { data } from '../mocked-data';
 import { Product } from '../model';
 
 @Component({
@@ -6,21 +8,22 @@ import { Product } from '../model';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnChanges {
-  @Input()
-  products!: Product[];
+export class ProductComponent implements OnInit {
+  products: Product[] = data;
 
-  product!: Product;
+  product: Product | undefined;
 
   itemsToCart = 1;
 
-  @Input()
-  productNumber!: number;
+  productNumber = 1;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnChanges(): void {
-    this.product = this.products[this.productNumber];
+  ngOnInit(): void {
+    const id = this.route.snapshot.params['id'];
+    console.log(id);
+
+    this.product = this.products.find((product) => product.id == id);
   }
 
   onClickHandler(event: Event) {
