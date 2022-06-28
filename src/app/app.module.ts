@@ -10,6 +10,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
 import { StockLeftPipe } from './stock-left.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localePl);
 
@@ -21,7 +22,7 @@ registerLocaleData(localePl);
     CartComponent,
     StockLeftPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
     {
       provide: LOCALE_ID,

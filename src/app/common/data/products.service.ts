@@ -1,19 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { data } from 'src/app/mocked-data';
+import { Observable } from 'rxjs';
 import { type Product } from 'src/app/model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private products: Product[] = data;
-  constructor() {}
+  url = 'http://localhost:3000';
+  constructor(private httpClient: HttpClient) {}
 
-  getProducts(): Product[] {
-    return this.products;
+  getProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`${this.url}/products`);
   }
 
-  getProduct(id: string): Product | undefined {
-    return this.products.find((product) => product.id === id);
+  getProduct(id: string): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.url}/products/${id}`);
   }
 }

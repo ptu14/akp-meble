@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../common/data/products.service';
-import { data } from '../mocked-data';
 import { Product } from '../model';
 
 @Component({
@@ -21,7 +20,9 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params['id'];
-    this.product = this.productsService.getProduct(id);
+    this.productsService
+      .getProduct(id)
+      .subscribe((element) => void (this.product = element));
   }
 
   onClickHandler(event: Event) {

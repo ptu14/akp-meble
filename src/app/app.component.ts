@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { data } from './mocked-data';
-import { Product } from './model';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +6,6 @@ import { Product } from './model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  data: Product[] = data;
-
   displayChaildComponent = true;
 
   diplayPorduct = 0;
