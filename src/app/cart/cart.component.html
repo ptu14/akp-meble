@@ -1,0 +1,45 @@
+<main class="container akp-cart">
+  <div class="row">
+    <div class="col-12">
+      <div class="akp-cart__cart-counter">
+        <h1>Ilość elementów w koszyku:</h1>
+        <button class="akp-button akp-button--secondary">Wyczyść koszyk</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <form>
+        <fieldset class="akp-cart__fildset">
+          <legend>Dane Odbiorcy:</legend>
+          <div class="akp-form-control">
+            <label for="firstname">Imię:</label>
+            <input
+              class="apk-control"
+              type="text"
+              id="firstname"
+              name="firstname"
+            />
+          </div>
+          <div class="akp-form-control">
+            <label for="lastname">Nazwisko (Opcjonalne):</label>
+            <input
+              class="apk-control"
+              type="text"
+              id="lastname"
+              name="lastname"
+            />
+          </div>
+          <div class="akp-form-control">
+            <label for="email">Email:</label>
+            <input class="apk-control" type="email" id="email" />
+          </div>
+        </fieldset>
+        <button
+          class="akp-button akp-button--primary akp-cart__submit"
+          type="submit"
+        >
+          Zamów
+        </button>
+      </form>
+    </div>
+  </div>
+</main>

@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+@import "grid";
+@import "variables";
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+.akp-button {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: 0.3s;
+
+  &.akp-button--primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
+
+    &[disabled]:not(#not-important) {
+      background-color: $color-gray;
+      cursor: not-allowed;
+    }
+  }
+
+  &.akp-button--secondary {
+    color: $color-primary;
+    box-shadow: inset 0 0 0 2px $color-primary;
+
+    &:hover {
+      color: darken($color-primary, 10%);
+      box-shadow: inset 0 0 0 2px darken($color-primary, 10%);
+    }
+
+    &[disabled]:not(#not-important) {
+      box-shadow: inset 0 0 0 2px $color-gray;
+      color: $color-gray;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.akp-form-control {
+  display: flex;
+  flex-direction: column;
+
+  &:focus-within {
+    color: $color-primary;
+  }
+
+  .akp-form-control__error {
+    font-size: 0.75rem;
+    color: $color-danger;
+  }
+}
+
+.apk-control {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px $color-primary;
+  transition: box-shadow 0.3s;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-primary;
+  }
+
+  &.ng-touched.ng-invalid {
+    box-shadow: 0 0 0 2px $color-danger;
+  }
+}

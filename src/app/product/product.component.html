@@ -1,0 +1,36 @@
+<main class="container akp-product">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="akp-product__image" [src]="product.image" alt="" />
+    </div>
+    <div class="col-md-7 offset-md-1">
+      <div class="akp-product__info">
+        <p class="akp-product__preheader">{{ product.shopName }}</p>
+        <h1 class="akp-product__product-name">
+          {{ product.name }}
+        </h1>
+        <p class="akp-product__caption">
+          {{ product.description }}
+        </p>
+        <p>Dostępnych sztuk: <span>111</span></p>
+        <div class="akp-product-price">
+          <div class="akp-product-price__current">
+            <h2 class="akp-product-price__price">{{ product.price }}</h2>
+          </div>
+          <div *ngIf="product.priceOld" class="akp-product-price__old">
+            <span class="akp-product-price__old-price">{{
+              product.priceOld
+            }}</span>
+            <span class="akp-product-price__discount">-50%</span>
+          </div>
+        </div>
+        <div class="akp-product__buttons">
+          <button class="akp-button akp-button--secondary">
+            Dodaj do koszyka
+          </button>
+          <button class="akp-button akp-button--primary">Kup teraz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

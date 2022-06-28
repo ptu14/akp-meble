@@ -1,0 +1,65 @@
+@import "../../variables";
+
+.akp-product {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  .akp-product__image {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    width: 100%;
+
+    @media (min-width: $md-breakpoint) {
+      margin-top: 3rem;
+    }
+  }
+
+  .akp-product__preheader {
+    color: $color-primary;
+  }
+
+  .akp-product__product-name {
+    font-weight: 600;
+  }
+
+  .akp-product__caption {
+    color: $color-gray;
+  }
+
+  .akp-product__buttons {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1rem;
+  }
+}
+
+.akp-product-price {
+  .akp-product-price__current {
+    display: flex;
+  }
+
+  .akp-product-price__price {
+    font-weight: 600;
+  }
+
+  .akp-product-price__old {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .akp-product-price__old-price {
+    font-size: 1.25rem;
+    color: $color-gray;
+    text-decoration: line-through;
+  }
+
+  .akp-product-price__discount {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    background-color: lighten($color-primary, 30%);
+    font-weight: 600;
+    color: $color-primary;
+  }
+}
