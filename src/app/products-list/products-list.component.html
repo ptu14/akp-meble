@@ -3,17 +3,22 @@
     <div class="col-md-12">
       <h1>Lista mebli:</h1>
       <ul class="akp-products-list">
-        <li class="akp-list-item" tabindex="-1">
+        <li
+          *ngFor="let product of products"
+          class="akp-list-item"
+          tabindex="-1"
+        >
           <img class="akp-list-item__image" [src]="product.image" alt="" />
           <div>
             <p class="akp-list-item__name">
               <a>{{ product.name }}</a>
             </p>
             <p class="akp-list-item__shop">{{ product.shopName }}</p>
-            <p class="akp-list-item__price">{{ product.price }}</p>
+            <p class="akp-list-item__price">
+              {{ product.price | currency }}
+            </p>
           </div>
-          <!-- TODO dodac wlasny pipe -->
-          <p class="akp-list-item__left">{{ product.itemsLeft }}</p>
+          <p class="akp-list-item__left">{{ product.itemsLeft | stockLeft }}</p>
         </li>
       </ul>
     </div>

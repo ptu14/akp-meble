@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Product } from '../model';
 
 @Component({
@@ -13,7 +6,7 @@ import { Product } from '../model';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit, OnChanges, AfterViewInit {
+export class ProductComponent implements OnChanges {
   @Input()
   products!: Product[];
 
@@ -26,25 +19,13 @@ export class ProductComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    // console.log('ngOnInit', this.productNumber);
-  }
-
   ngOnChanges(): void {
     this.product = this.products[this.productNumber];
-  }
-
-  ngAfterViewInit() {
-    // console.log('widok gotowy');
   }
 
   onClickHandler(event: Event) {
     if (event.target) {
       this.itemsToCart = (event.target as HTMLInputElement).valueAsNumber;
     }
-  }
-
-  test() {
-    console.log('wykonal mnie model rodzica');
   }
 }
