@@ -1,4 +1,7 @@
 <main *ngIf="product" class="container akp-product">
+  <button [routerLink]="['..', 2]" class="akp-button akp-button--secondary">
+    Przejdz do elementu 2
+  </button>
   <div class="row">
     <div class="col-md-4">
       <img class="akp-product__image" [src]="product.image" alt="" />

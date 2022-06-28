@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { pluck, switchMap } from 'rxjs/operators';
 import { ProductsService } from '../common/data/products.service';
 import { Product } from '../model';
 
@@ -8,10 +10,14 @@ import { Product } from '../model';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   product!: Product | undefined;
 
+  id: string = '1';
+
   itemsToCart = 1;
+
+  subscriptions = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -19,10 +25,21 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id: string = this.route.snapshot.params['id'];
-    this.productsService
-      .getProduct(id)
-      .subscribe((element) => void (this.product = element));
+    const productSubscription = this.route.params
+      .pipe(
+        pluck('id'),
+        switchMap((id) => {
+          return this.productsService.getProduct(id);
+        })
+      )
+      .subscribe((element) => {
+        this.product = element;
+      });
+    this.subscriptions.add(productSubscription);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // pamietaj zawsze sie odsubscrybowac
   }
 
   onClickHandler(event: Event) {
