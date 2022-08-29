@@ -1,28 +1,27 @@
 <main class="container akp-product">
   <div class="row">
     <div class="col-md-4">
-      <img
-        class="akp-product__image"
-        src="./assets/img/furniture-2.jpg"
-        alt=""
-      />
+      <img class="akp-product__image" [src]="product.image" alt="" />
     </div>
     <div class="col-md-7 offset-md-1">
       <div class="akp-product__info">
-        <p class="akp-product__preheader">Lorem, ipsum.</p>
-        <h1 class="akp-product__product-name">Lorem ipsum dolor sit amet.</h1>
+        <p class="akp-product__preheader">{{ product.shopName }}</p>
+        <h1 class="akp-product__product-name">{{ product.name }}</h1>
         <p class="akp-product__caption">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et excepturi
-          sint vel illo natus enim nobis quam eaque, sunt at!
+          {{ product.description }}
         </p>
-        <p>Dostępnych sztuk: <span> 10</span></p>
+        <p>
+          Dostępnych sztuk: <span> {{ product.itemsLeft }}</span>
+        </p>
         <div class="akp-product-price">
           <div class="akp-product-price__current">
-            <h2 class="akp-product-price__price">1200 zł</h2>
+            <h2 class="akp-product-price__price">{{ product.price }}</h2>
           </div>
           <div class="akp-product-price__old">
-            <span class="akp-product-price__old-price">1000 zł</span>
-            <span class="akp-product-price__discount">10%</span>
+            <span class="akp-product-price__old-price">{{
+              product.priceOld
+            }}</span>
+            <span class="akp-product-price__discount">{{ discount }}</span>
           </div>
         </div>
         <div style="margin: 1rem 0">
