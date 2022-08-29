@@ -1,60 +1,38 @@
-<main *ngIf="product" class="container akp-product">
-  <button [routerLink]="['..', 2]" class="akp-button akp-button--secondary">
-    Przejdz do elementu 2
-  </button>
+<main class="container akp-product">
   <div class="row">
     <div class="col-md-4">
-      <img class="akp-product__image" [src]="product.image" alt="" />
+      <img
+        class="akp-product__image"
+        src="./assets/img/furniture-2.jpg"
+        alt=""
+      />
     </div>
     <div class="col-md-7 offset-md-1">
       <div class="akp-product__info">
-        <p class="akp-product__preheader">{{ product.shopName }}</p>
-        <h1 class="akp-product__product-name">
-          {{ product.name }}
-        </h1>
+        <p class="akp-product__preheader">Lorem, ipsum.</p>
+        <h1 class="akp-product__product-name">Lorem ipsum dolor sit amet.</h1>
         <p class="akp-product__caption">
-          {{ product.description }}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et excepturi
+          sint vel illo natus enim nobis quam eaque, sunt at!
         </p>
-        <p>
-          Dostępnych sztuk: <span> {{ product.itemsLeft }}</span>
-        </p>
+        <p>Dostępnych sztuk: <span> 10</span></p>
         <div class="akp-product-price">
           <div class="akp-product-price__current">
-            <h2 class="akp-product-price__price">
-              {{ itemsToCart * product.price | currency }}
-            </h2>
+            <h2 class="akp-product-price__price">1200 zł</h2>
           </div>
-          <div *ngIf="product.priceOld" class="akp-product-price__old">
-            <span class="akp-product-price__old-price">{{
-              itemsToCart * product.priceOld | currency
-            }}</span>
-            <span class="akp-product-price__discount">{{
-              (product.priceOld - product.price) / product.priceOld | percent
-            }}</span>
+          <div class="akp-product-price__old">
+            <span class="akp-product-price__old-price">1000 zł</span>
+            <span class="akp-product-price__discount">10%</span>
           </div>
         </div>
         <div style="margin: 1rem 0">
-          <input
-            class="apk-control"
-            type="number"
-            [(ngModel)]="itemsToCart"
-            [min]="1"
-            [max]="product.itemsLeft"
-          />
+          <input class="apk-control" type="number" [min]="1" [max]="10" />
         </div>
         <div class="akp-product__buttons">
-          <button
-            class="akp-button akp-button--secondary"
-            (click)="addToBasket()"
-          >
+          <button class="akp-button akp-button--secondary">
             Dodaj do koszyka
           </button>
-          <button
-            class="akp-button akp-button--primary"
-            [disabled]="product.itemsLeft === 0"
-          >
-            Kup teraz
-          </button>
+          <button class="akp-button akp-button--primary">Kup teraz</button>
         </div>
       </div>
     </div>

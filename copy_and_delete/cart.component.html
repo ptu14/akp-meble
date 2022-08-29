@@ -2,24 +2,17 @@
   <div class="row">
     <div class="col-12">
       <div class="akp-cart__cart-counter">
-        <h1>Ilość elementów w koszyku: {{ notification$ | async }}</h1>
-        <button class="akp-button akp-button--secondary" (click)="clearCart()">
-          Wyczyść koszyk
-        </button>
+        <h1>Ilość elementów w koszyku: 0</h1>
+        <button class="akp-button akp-button--secondary">Wyczyść koszyk</button>
       </div>
     </div>
     <div class="col-md-4">
-      <form [formGroup]="contactForm" (ngSubmit)="submit()">
+      <form>
         <fieldset class="akp-cart__fildset">
           <legend>Dane Odbiorcy:</legend>
           <div class="akp-form-control">
             <label for="firstname">Imię:</label>
-            <input
-              class="apk-control"
-              type="text"
-              id="firstname"
-              formControlName="firstname"
-            />
+            <input class="apk-control" type="text" id="firstname" />
           </div>
           <div class="akp-form-control">
             <label for="lastname">Nazwisko</label>
@@ -28,21 +21,12 @@
               class="apk-control"
               type="text"
               id="lastname"
-              formControlName="lastname"
             />
           </div>
           <div class="akp-form-control">
             <label for="email">Email:</label>
-            <input
-              class="apk-control"
-              type="email"
-              id="email"
-              formControlName="email"
-            />
+            <input class="apk-control" type="email" id="email" />
           </div>
-          <!-- <p *ngIf="emailControl.touched && emailControl.invalid">
-            Nieporawny adres email
-          </p> -->
         </fieldset>
         <button
           class="akp-button akp-button--primary akp-cart__submit"
