@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Lista mebli:</h1>
+      <ul class="akp-products-list" *ngIf="products.length; else notFound">
+        <li
+          *ngFor="let product of products"
+          class="akp-list-item"
+          tabindex="-1"
+        >
+          <img class="akp-list-item__image" [src]="product.image" alt="" />
+          <div>
+            <p class="akp-list-item__name">
+              <a>{{ product.name }}</a>
+            </p>
+            <p class="akp-list-item__shop">{{ product.shopName }}.</p>
+            <p class="akp-list-item__price">{{ product.price | currency }}</p>
+          </div>
+          <p class="akp-list-item__left">
+            {{ product.itemsLeft | stockLeft }}
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <p>Nie znaleziono żadnych mebli</p>
+</ng-template>

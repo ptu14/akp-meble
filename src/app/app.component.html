@@ -14,10 +14,20 @@
         <nav>
           <ul class="akp-navigation">
             <li>
-              <a class="akp-navigation__item">Meble</a>
+              <a
+                [routerLink]="'products'"
+                [routerLinkActive]="'akp-navigation__item_active'"
+                class="akp-navigation__item"
+                >Meble</a
+              >
             </li>
             <li>
-              <a class="akp-navigation__item">Koszyk (0)</a>
+              <a
+                [routerLink]="'cart'"
+                [routerLinkActive]="'akp-navigation__item_active'"
+                class="akp-navigation__item"
+                >Koszyk (0)</a
+              >
             </li>
           </ul>
         </nav>
@@ -26,4 +36,4 @@
   </div>
 </header>
 
-<akp-product [product]="products[0]"></akp-product>
+<router-outlet></router-outlet>

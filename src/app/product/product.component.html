@@ -15,13 +15,17 @@
         </p>
         <div class="akp-product-price">
           <div class="akp-product-price__current">
-            <h2 class="akp-product-price__price">{{ product.price }}</h2>
+            <h2 class="akp-product-price__price">
+              {{ product.price | currency }}
+            </h2>
           </div>
-          <div class="akp-product-price__old">
+          <div *ngIf="product.priceOld" class="akp-product-price__old">
             <span class="akp-product-price__old-price">{{
-              product.priceOld
+              product.priceOld | currency
             }}</span>
-            <span class="akp-product-price__discount">{{ discount }}</span>
+            <span class="akp-product-price__discount">{{
+              (product.priceOld - product.price) / product.priceOld | percent
+            }}</span>
           </div>
         </div>
         <div style="margin: 1rem 0">

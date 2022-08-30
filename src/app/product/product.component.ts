@@ -1,20 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DEFAULT_CURRENCY_CODE, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model';
 
 @Component({
   selector: 'akp-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
+  providers: [
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'USD',
+    },
+  ],
 })
 export class ProductComponent implements OnInit {
-  @Input()
   product!: Product;
 
-  discount: number = 0;
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    if (this.product.priceOld) {
-      this.discount = this.product.price - this.product.priceOld;
-    }
+    console.log(this.route.snapshot.params);
   }
 }
